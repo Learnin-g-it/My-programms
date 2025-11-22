@@ -1,0 +1,4151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bujji’s Code Library 💻</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      padding: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    #search {
+      display: block;
+      margin: 10px auto;
+      padding: 5px;
+      width: 60%;
+      border: 2px solid #111010;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .code-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 8px));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .code-card {
+      background: rgb(179, 169, 169);
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .code-card:hover {
+      transform: translateY(-5px);
+    }
+    .code-card h3 {
+      margin: 0;
+      color: #0078d7;
+    }
+    .code-card p {
+      font-size: 14px;
+      color: #555;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #00ff99;
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      max-height: 80%;
+      overflow-y: auto;
+    }
+    .close-btn {
+      background: #e11d48;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>...Hema You can Do It ...</h1>
+  <input type="text" id="search" placeholder="Search code...">
+
+  <div class="code-container" id="codeContainer"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">Close</button>
+      <h2 id="modalTitle"></h2>
+      <pre id="modalCode"></pre>
+    </div>
+  </div>
+
+  <script>
+    const codes = [
+      {
+        title: " 1. Rainwater Trapping ",
+        language: "",
+        description: "",
+        code:`/*Trapping  Rain water*/
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    int n=5;
+	    int a[]={3,1,2,0,5,6};
+	    System.out.print(trap(a));
+	}
+	static int trap(int a[])
+	{
+	    int l=0,r=a.length-1,lmax=0,rmax=0,sum=0;
+	    while(l<r)
+	    {
+	        if(a[l]<=a[r])
+	        {
+	            if(a[l]>=lmax)
+	               lmax=a[l];
+	            else
+	              sum+=lmax-a[l];
+	              
+	             l++;
+	        }
+	        else
+	        {
+	            if(a[r]>rmax)
+	               rmax=a[r];
+	            else
+	              sum+=rmax-a[r];
+	              
+	              r--;
+	        }
+	    }
+	    return sum;
+	}
+}
+`
+      },
+      {
+        title: " 2. Number Pattern Square 4333334",
+        language: "",
+        description:"",
+        code: `/*
+ 4 4 4 4 4 4 4
+ 4 3 3 3 3 3 4
+ 4 3 2 2 2 3 4
+ 4 3 2 1 2 3 4
+ 4 3 2 2 2 3 4
+ 4 3 3 3 3 3 4
+ 4 4 4 4 4 4 4
+
+*/
+class Main 
+{
+    public static void main(String[] args) 
+    {
+        int n=4;
+        int size=2*n-1;
+        int dc=(int)Math.log10(n)+2;
+        for(int i=0;i<size;i++)
+        {
+            for(int j=0;j<size;j++)
+            {
+                int t=i;
+                int l=j;
+                int r=size-1-j;
+                int b=size-1-i;
+                int mindist=Math.min((Math.min(t,b)),(Math.min(l,r)));
+                System.out.printf("%"+dc+"d",(n-mindist));
+            }
+            System.out.println();
+        }
+    }
+}`
+      },
+{
+  title: "3. Mobile Number valid or not",
+  language: "",
+  description: "",
+  code: `/*
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+	     String s=sc.next();
+	       boolean b=true;
+		for(int i=0;i<s.length()-1;i++)
+		{
+		   int n1=Integer.parseInt(s.charAt(i)+"");
+		   int n2=Integer.parseInt(s.charAt(i+1)+"");
+		   if(!ispossible(n1,n2))
+		   {
+		      System.out.println("Invalid Pattern"); 
+		      b=false;
+		      break;
+		   }
+		   
+		}
+		if(b)
+		{
+		    System.out.println("Valid Pattern");
+		}
+		
+	}
+	static boolean ispossible(int n1,int n2)
+	{
+	    String a[]={"","245","13456","256","12578","12346789","23589","458","45679","569"};
+	    if(a[n1].contains(n2+""))
+	        return true;
+	    else 
+	       return false;
+	}
+}  (OR)
+*/
+
+
+import java.util.*;
+class Main
+{
+    static Scanner sc = new Scanner (System.in);
+    public static void main (String[] args) 
+    {
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int a[][] = new int[r][c];
+        int num = 1;
+        for(int i = 0;i<r;i++)
+        {
+            for(int j = 0;j<c;j++)
+            {
+                a[i][j] = num++;
+            }
+        }
+
+        String s = sc.next();
+        int count = 0;
+        for(int k = 0; k < s.length()-1; k++)
+        {
+            int n1 = Integer.parseInt("" + s.charAt(k));
+            int n2 = Integer.parseInt("" + s.charAt(k+1));
+            int found = 0;
+            for(int i = 0;i<r;i++)
+            {
+                for(int j = 0;j<c;j++)
+                {
+                    if(a[i][j] == n1)
+                    {
+                        if(j-1 >= 0 && a[i][j-1] == n2) 
+                        found = 1;
+                        if(j+1 < c && a[i][j+1] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && a[i-1][j] == n2) 
+                        found = 1;
+                        if(i+1 < r && a[i+1][j] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && j-1 >= 0 && a[i-1][j-1] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && j+1 < c && a[i-1][j+1] == n2) 
+                        found = 1;
+                        if(i+1 < r && j-1 >= 0 && a[i+1][j-1] == n2) 
+                        found = 1;
+                        if(i+1 < r && j+1 < c && a[i+1][j+1] == n2) 
+                        found = 1;
+                    }
+                }
+            }
+
+            if(found == 1)
+                count++;
+            else
+                break;
+        }
+
+        if(count == s.length()-1)
+            System.out.print("Valid Pattern");
+        else
+            System.out.print("Invalid Pattern");
+    }
+}`
+},
+{
+  title: "4. Alternating Prime and Fibonacci Number Pattern",
+  language: "", 
+  description: "",
+  code: `import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int c=1,c1=1,c2=1;
+	    for(int i=1;i<=n;i++)
+	    {
+	       for(int j=1;j<=i;j++) 
+	       {
+	          if(c%2==1)
+	          {
+	            System.out.print(prime(c1)+" ");
+	            c1++;
+	          }
+	          else
+	          {
+	            System.out.print(fib(c2)+" "); 
+	            c2++;
+	          }
+	          c++;
+	       }
+	       
+	       System.out.println();
+	    }
+	    
+	}
+	static int prime(int n)
+	{   int c=0;
+	    for(int i=2; ;i++)
+    	{
+    	    int sq=(int)Math.sqrt(i);
+    	    int j;
+    	    for( j=2;j<=sq;j++) 
+    	    {
+    	        if(i%j==0)
+    	        {
+    	            break;
+    	        }
+    	    }
+    	    if(j==sq+1)
+    	    {
+    	      c++;
+    	      if(c==n)
+    	      {
+    	          return i;
+    	      }
+    	    }
+    	}
+	   
+	}
+	static int fib(int n)
+    { 
+        int c1=0;
+        int a=0,b=1;
+        for(int i=1;i<=n;i++)
+    	{
+    	    c1++;
+    	    if(c1==n)
+    	    {
+    	        return a;
+    	    }
+    	    int c=a+b;
+    	    a=b;b=c;
+    	}
+    	return a;
+	}
+}
+`
+},
+{
+  title: "5. Permutation of a String",
+  language: "", 
+  description: "",
+  code: `//permutation of a given String
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    String s="hem";
+	    char a[]=s.toCharArray();
+		perm(a,0);
+		
+	}
+	static void perm(char a[],int idx)
+	{
+	    
+	    if(idx==a.length-1)
+	    {
+	        System.out.println(String.valueOf(a));
+	        return;
+	    }
+	    for(int i=idx;i<a.length;i++)
+	    {
+	          char t=a[i];
+	          a[i]=a[idx];
+	          a[idx]=t;
+	          perm(a,idx+1);
+	          t=a[i];
+	          a[i]=a[idx];
+	          a[idx]=t;
+	    }
+	   
+	}
+}`
+},
+{
+  title: "6. CROSS  PATTERN ",
+  language: "", 
+  description: "",
+  code: `/*
+1
+6 2 
+10 7 3
+13 11 8 4
+15 14 12 9 5
+*/
+public class Main
+{
+    public static void main(String[] args)
+    {
+        int n=5,p=1;
+        int k=n;
+        for(int i=1;i<=n;i++)
+        {
+            int a=k;
+            int b=p;
+            for(int j=1;j<=i;j++)
+            {
+               System.out.print(b+" "); 
+               b-=a++;
+            }
+            p+=k--;
+            System.out.println();
+        }
+        
+    }
+}
+`
+},
+{
+  title: "7. Email Validation Using regex",
+  language: "", 
+  description: "",
+  code: `import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String email = "SucceSS_StorieS@cvcorp.in";
+        String regex = "^[A-Za-z](?:[A-Za-z0-9._]*[A-Za-z0-9])?@[A-Za-z0-9]+\\.[A-Za-z]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches())
+        {
+            System.out.println("valid email.");
+        } 
+        else 
+        {
+            System.out.println("NOT a valid email." );
+        }
+        sc.close(); 
+    }
+}
+`
+},
+{
+  title: "8. Integer - Roman Conversion",
+  language: "", 
+  description: "",
+  code: `import java.util.*;
+
+public class Main 
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
+        map.put(1000, "M");
+        map.put(900, "CM");
+        map.put(500, "D");
+        map.put(400, "CD");
+        map.put(100, "C");
+        map.put(90, "XC");
+        map.put(50, "L");
+        map.put(40, "XL");
+        map.put(10, "X");
+        map.put(9, "IX");
+        map.put(5, "V");
+        map.put(4, "IV");
+        map.put(1, "I");
+
+        String s="";
+
+        for (Map.Entry<Integer, String> entry : map.entrySet()) 
+        {
+            while (num >= entry.getKey())
+            {
+                s+=entry.getValue();
+                num -= entry.getKey();
+            }
+        }
+
+        System.out.println("Roman numeral: " + s);
+    }
+}
+`
+},
+{
+  title: "9. Roman - Integer Conversion",
+  language: "", 
+  description: "",
+  code: `class Solution {
+    public int romanToInt(String s) 
+    {
+        LinkedHashMap<Character,Integer> hm=new LinkedHashMap<>();
+        hm.put('I',1);
+        hm.put('V',5);
+        hm.put('X',10);
+        hm.put('L',50);
+        hm.put('C',100);
+        hm.put('D',500);
+        hm.put('M',1000);
+        int result=0;
+        for(int i=0;i<s.length();i++)
+        {
+            int current=hm.get(s.charAt(i));
+            if(i+1<s.length())
+            {
+                    if(hm.get(s.charAt(i+1))>current)
+                       result-=current;
+                    else
+                       result+=current;
+            }
+            else
+            {
+                result+=current;
+            }
+        }
+        return result;
+    }
+}`
+},
+{
+  title: "10. Nearest Fibonacci",
+  language: "", 
+  description: "",
+  code: `//nearest fib
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    Scanner sc=new Scanner(System.in);
+	     int n1=sc.nextInt();
+	     int a[]={4,5,6,8,17};
+	    for(int k=0;k<n1;k++)
+	    {
+	        int n=a[k];
+    	     int bf,ff;
+    	     if(n==0)
+    	        System.out.println(1);
+    	     else if(n==1)
+    	         System.out.println("0 1");
+    	    else
+    	    {
+    	         int i=n+1,j=n-1;
+        	     while(true)
+        	     {
+        	         if(isfib(i++))
+        	         {
+        	             ff=i-1;
+        	             break;
+        	         }
+        	     }
+        	     while(true)
+        	     {
+        	         if(isfib(j--))
+        	         {
+        	             bf=j+1;
+        	             break;
+        	         }
+        	     }
+        	     if(n-bf<ff-n)
+        	        System.out.println(bf);
+        	     else if(n-bf>ff-n)
+        	        System.out.println(ff);
+        	     else
+        	       System.out.println(bf+" "+ff); 
+    	    }
+    	     
+	    }
+	    
+    }
+    static boolean isfib(int n)
+    {
+        return ispf(5*n*n+4)||ispf(5*n*n-4);
+    }
+    static boolean ispf(int n)
+    {
+        int sq=(int)Math.sqrt(n);
+        return sq*sq==n;
+    }
+}
+
+`
+},
+{
+  title: "11. Alphabet columnwise pattern",
+  language: "", 
+  description: "",
+  code: `import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=1;i<=n;i++)
+		{   
+		    int p=n-1,k=i;
+		    for(int j=1;j<=i;j++)
+		    {    
+		        char ch=(char)(k%26+64);
+		         if(k%26==0)
+		           System.out.print("Z ");
+		         else
+		          {
+		               System.out.print(ch+" ");
+		          }
+		         
+		          k+=p--;
+		    }
+		    System.out.println();
+		}
+	}
+}`
+},
+{
+  title: "12. Valid Parentheses using Stack",
+  language: "", 
+  description: "",
+  code: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        System.out.println(isValid(s));
+    }
+
+    static boolean isValid(String s) 
+    {
+        Stack<Character> stack = new Stack<>();
+        for(char ch:s.toCharArray())
+        {
+            
+            if(ch=='('||ch=='['||ch=='{')
+               stack.push(ch);
+            else
+            {
+                if(stack.isEmpty())
+                    return false;
+               char t=stack.pop();
+               if((t=='('&&ch!=')')||(t=='{'&&ch!='}')||(t=='['&&ch!=']'))
+                  return false;
+            }
+        }
+        return true;
+        
+    }
+}
+`
+},
+{
+  title: "13. Valid Subsequenceor not",
+  language: "", 
+  description: "",
+  code: `/*i/p1: 564322
+  i/p2: 362
+  o/p :not valid*/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    String s1=sc.next();
+	    String s2=sc.next();
+	    char a[]=s1.toCharArray();
+	    int ca=0;
+	    int k=(int)Math.pow(2,s1.length())-1;
+	    for(int i=1;i<=k;i++)
+	    {
+	        int t=i;
+	        int c=0;
+	        String temp="";
+	        while(t!=0)
+	        {
+	            int r=t%2;
+	            if(r==1)
+	              temp+=a[c]+"";
+	              
+	           t/=2;
+	           c++;
+	        }
+	        if(temp.equals(s2))
+	        {
+	            System.out.print("sub seq");
+	            ca++;
+	        }
+	       
+	        
+	    }
+	    if(ca==0)
+	      System.out.println("not");
+	}
+}
+`
+},
+{
+  title: "14. Kth Number or not",
+  language: "", 
+  description: "",
+  code: `import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		ArrayDeque<Integer> ad=new ArrayDeque<>();
+		int sum=0;
+		for(char ch:(n+"").toCharArray())
+		         ad.add(ch-48);
+		int c=0;
+		while(sum<n)
+		{
+		    for(int k:ad)
+		      sum+=k;
+		    if(sum==n) 
+		    {
+		          System.out.println("Kth num");
+		          c++;
+		    }
+		    else
+		    {
+		        ad.removeFirst();
+		        ad.addLast(sum);
+		        sum=0;
+		    }
+		}
+		if(c==0)
+		   System.out.print("not a kth num");
+	}
+}
+`
+},
+{
+  title: "15. TEJ pattern 😘",
+  language: "", 
+  description: "",
+  code: `import java.util.Scanner;
+class Main
+{
+    public static void main(String args[])
+    {
+        
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=1;i<=n;i++)
+        {
+            int k=i;
+            for(int j=1;j<=i;j++)
+            {
+                if(j==1)
+                {
+                    System.out.print(i+" ");
+                }
+                else if(j%2==0)
+                {
+                 
+                    System.out.print(k+n+j-2*i +" ");
+                }
+                else
+                {
+                    System.out.print(k+" ");
+                }
+                k+=n-j;
+            }
+            System.out.println();
+        }
+        
+    }
+}`
+},
+{
+  title: "16. Sum of Numbers in a String",
+  language: "", 
+  description: "",
+  code: `import java.util.regex.*;
+import java.util.*;
+class Main 
+{
+    
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        String s = sc.next();
+        int c=0;
+         int i=0;
+        int sum=0;
+        while(i<s.length())
+        {
+            char ch=s.charAt(i);
+            String t="";
+            if(Character.isDigit(ch)||ch=='-')
+            {  
+                int start=i;
+                if(ch=='-')i++;
+                while(i<s.length()&&Character.isDigit(s.charAt(i)))
+                {
+                    i++;
+                }
+                sum+=Integer.parseInt(s.substring(start,i));
+            }
+            i++;
+        }
+        System.out.println(sum);
+        // Pattern p=Pattern.compile("-?\\d+");
+        // Matcher m=p.matcher(s);
+        // while(m.find())
+        // {    c++;
+        //     sum+=Integer.parseInt(m.group());
+        // }
+        // if(c==0)
+        // {
+        //     System.out.println("Numbers not found");
+        // }
+        // else
+        // {
+        //     System.out.println(sum);
+        // }
+        
+    }
+}
+`
+},
+{
+  title: "17. Odd freq in desc and Even freq in asc",
+  language: "", 
+  description: "",
+  code: `/*print the odd frequency of elements in decreasing order and then print the
+even frequency of elements in increasing order*/
+import java.util.*;
+public class Main
+{
+    public static void main(String[] arg)
+    {
+        int n = 10;
+        int a[] = {93,36,72,36,93,72,93,36,93,93};
+        int fr[] = new int[n];
+        for(int i=0;i<n;i++)
+        {
+            int oc=0;
+            for(int j=0;j<n;j++)
+            {
+                if(a[i]==a[j])
+                    oc++;
+            }
+            fr[i]=oc;
+        }
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(fr[i]%2==0 && fr[j]%2==0&&fr[i]>fr[j])
+                {
+                       fr[i]=fr[j]+fr[i]-(fr[j]=fr[i]);
+	                   a[i]=a[j]+a[i]-(a[j]=a[i]);
+                }
+                if(fr[i]%2==1 && fr[j]%2==1&&fr[i]<fr[j])
+                {
+                       fr[i]=fr[j]+fr[i]-(fr[j]=fr[i]);
+	                   a[i]=a[j]+a[i]-(a[j]=a[i]);
+                }
+                
+            }
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            int bc=0;
+            for(int j=i;j>=0;j--)
+            {
+               if(a[i]==a[j])
+                 bc++;
+            }
+            if(bc==1&&fr[i]%2==1)
+              System.out.println(a[i]+" -> "+fr[i]);
+        }
+        for(int i=0;i<n;i++)
+        {
+            int bc=0;
+            for(int j=i;j>=0;j--)
+            {
+               if(a[i]==a[j])
+                 bc++;
+            }
+            if(bc==1&&fr[i]%2==0)
+              System.out.println(a[i]+" -> "+fr[i]);
+        }
+    }
+}
+`
+},
+{
+  title: "18. Josephus Problem(Killing Person)",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int p=(int)Math.pow(2,(int)(Math.log(n)/Math.log(2)));
+		System.out.println(2*(n-p)+1);
+		
+	}
+
+}`
+},
+{
+  title: "19. Character and Number Sum Pair using HashMap",
+  language: "", 
+  description: "",
+  code:`//character and number sum pair using hashmap
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int n=10;
+	     String[] a = {"D", "10", "C", "20", "A", "5", "D", "2", "C", "10", "I", "3", "C", "5", "K", "3", "D", "3", "K", "6"};
+          LinkedHashMap<String,Integer> hm=new LinkedHashMap<>();
+          for(int i=0;i<n*2;i+=2)
+          {
+              if(hm.containsKey(a[i]))
+                 hm.put(a[i],hm.get(a[i])+Integer.parseInt(a[i+1]));
+              else
+                hm.put(a[i],Integer.parseInt(a[i+1]));
+          }
+          System.out.println(hm);
+	}
+}
+`
+},
+{
+  title: "20. Goldbach Number",
+  language: "", 
+  description: "",
+  code:`/*i/p:50
+o/p:
+3 47
+7 43
+13 37
+19 31
+Goldbach Number
+*/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    ArrayList<Integer> al=new ArrayList<>();
+	    LinkedHashMap<Integer,Integer> hm=new LinkedHashMap<>();
+	    for(int i=2;i<=n;i++)
+	    {
+	       if(isprime(i))
+	         al.add(i);
+	    }
+	     for(int i=0;i<al.size()-1;i++)
+	     {
+	         for(int j=i+1;j<al.size();j++)
+	         {
+	             if(al.get(i)+al.get(j)==n)
+	                hm.put(al.get(i),al.get(j));
+	         }
+	     }
+	     if(hm.size()<1)
+	       System.out.println("No pairs Found So not a Goldbach Number");
+	     else if(hm.size()==1)
+	       System.out.println("Only one pair Found So not a Goldbach Number");
+	     else
+	     {
+	         for(Map.Entry<Integer,Integer> e:hm.entrySet())
+	            System.out.println(e.getKey()+" "+e.getValue());
+	       
+	          System.out.println("Goldbach Number");
+	     }
+	}
+	   static boolean isprime(int n)
+	    {
+	        for(int i=2;i<=(int)Math.sqrt(n);i++)
+	        {
+	            if(n%i==0) 
+	              return false;
+	        }
+	        return true;
+	    }
+}
+`
+},
+{
+  title: "21. Add Two Numbers Represented by Strings",
+  language: "", 
+  description: "",
+  code:`                         
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.next();
+        String s2 = sc.next();
+
+        int n1 = s1.length() - 1;
+        int n2 = s2.length() - 1;
+        int carry = 0;
+        String sum = "";
+
+        while (n1 >= 0 || n2 >= 0 || carry > 0) {
+            int val1 = (n1 >= 0) ? s1.charAt(n1--) - '0' : 0;
+            int val2 = (n2 >= 0) ? s2.charAt(n2--) - '0' : 0;
+
+            int total = val1 + val2 + carry;
+            carry = total / 10;
+            sum = (total % 10) + sum;
+        }
+
+        System.out.println(sum);
+    }
+}
+`
+},
+{
+  title: "22. Happy Number",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+public class Main {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Set<Integer> hs = new HashSet<>();
+
+        while (n != 1 && !hs.contains(n))
+        {
+            hs.add(n);
+            n = sum(n);
+        }
+
+        if (n == 1)
+            System.out.println("Happy number");
+        else
+            System.out.println("Not a Happy number");
+    }
+
+    static int sum(int n)
+    {
+        int sum = 0;
+        while (n != 0)
+        {
+            int r = n % 10;
+            sum += (int)Math.pow(r, 2);
+            n /= 10;
+        }
+        return sum;
+    }
+}
+`
+},
+{
+  title: "23. Strontio Number",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+
+public class StrontioNumberChecker 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a 4-digit number: ");
+        int num = sc.nextInt();
+        if (num < 1000 || num > 9999) 
+        {
+            System.out.println("Invalid number");
+            return;
+        }
+        int num2 = num * 2;
+        int num1mid = (num / 10) % 100;
+        int num2mid = (num2 / 10) % 100;
+
+        if (num1mid == num2mid) {
+            System.out.println(num + " is a Strontio number");
+        } else {
+            System.out.println(num + " is NOT a Strontio number");
+        }
+    }
+}
+`
+},
+{
+  title: "24. Kaprekar Number 45^2=2025 --> 20+25=45",
+  language: "", 
+  description: "",
+  code:` import java.util.Scanner;
+   public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int d = String.valueOf(n).length();
+        int sq = n * n;
+        String sqStr = String.valueOf(sq);
+        String rStr = sqStr.length() <= d ? sqStr : sqStr.substring(sqStr.length() - d);
+        String lStr = sqStr.length() <= d ? "0" : sqStr.substring(0, sqStr.length() - d);
+        int r = Integer.parseInt(rStr);
+        int l = Integer.parseInt(lStr);
+        if (l + r == n) {
+            System.out.println(n + " is a Kaprekar number");
+        } else {
+            System.out.println(n + " is NOT a Kaprekar number");
+        }
+    }`
+},
+{
+  title: "25. Smith Num n=666 6=2*3*3*3*7 sum of dig of 666 =sum of digits of factors=18",
+  language: "", 
+  description: "",
+  code:` import java.util.Scanner;
+  public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int originalN = n;
+        int sumDigitsN = sumOfDigits(n);
+        int sumDigitsFactors = 0;
+
+        for (int i = 2; i <= n; i++) {
+            while (n % i == 0) {
+                sumDigitsFactors += sumOfDigits(i);
+                n /= i;
+            }
+        }
+
+        if (sumDigitsN == sumDigitsFactors) {
+            System.out.println(originalN + " is a Smith number");
+        } else {
+            System.out.println(originalN + " is NOT a Smith number");
+        }
+    }
+
+    static int sumOfDigits(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }`
+},
+{
+  title: "26. Circular Prime",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int c=0;
+	    int dc=(int)Math.log10(n);
+	    for(int j=1;j<=dc;j++)
+	    {
+	       
+	        for(int i=2;i<=(int)Math.sqrt(n);i++)
+	         {
+	                 if(n%i==0)
+	                 {  
+	                    System.out.print("not a circular prime");
+	                    return;
+	                 }
+	         }
+	   
+	            int r=n%(int)Math.pow(10,dc);
+	            n=r*10+n/(int)Math.pow(10,dc);
+
+	    }
+	    System.out.print("circular prime number");
+	    
+   	}
+}`
+},
+{
+  title: "27. Diamond Star Pattern hollow",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+class Main{
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n-i;j++)
+            
+                System.out.print(" ");
+            
+            for(int j=1;j<=i;j++)
+            {
+                if(j%4==1 || j%4==2)
+                {
+                    System.out.print("*");
+                }
+                else
+                {
+                    System.out.print(" ");
+                }
+            }
+            for(int j=i;j>=1;j--)
+            {
+                if(j%4==1 || j%4==2)
+                {
+                    System.out.print("*");
+                }
+                else
+                {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+        for(int i=n-1;i>=1;i--){
+            for(int j=1;j<=n-i;j++)
+            {
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++)
+            {
+                if(j%4==1 || j%4==2)
+                {
+                    System.out.print("*");
+                }
+                else
+                {
+                    System.out.print(" ");
+                }
+            }
+            for(int j=i;j>=1;j--)
+            {
+                if(j%4==1 || j%4==2)
+                {
+                    System.out.print("*");
+                }
+                else
+                {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+        
+    }
+}`
+},
+{
+  title: "28. Emirp Number",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int rev=0;
+		int dc=(int)Math.log10(n)+1;
+		if(isprime(n))
+		{
+		    while(n>0)
+		    {
+		        rev=rev*10+n%10;
+		        n/=10;
+		        
+		    }
+		   
+		    if(isprime(rev))
+		    {
+		        System.out.print("emirp");
+		    }
+		    else
+		    {
+		        System.out.println("not");
+		    }
+		    
+		}
+		
+		
+	}
+	
+	static boolean isprime(int n)
+	{
+	    if(n<2)
+	    {
+	        return false;
+	    }
+	    
+	    
+	    int sq=(int)Math.sqrt(n);
+	    for(int j=2;j<=sq;j++)
+	    {
+	        if(n%j==0)
+	        {
+	           return false; 
+	            
+	        }
+	    }
+	    
+	        return true;
+	    
+	}
+}
+`
+},
+{
+  title: "29. Automorphic Number n=5 5^2=25 & n=25 25^2=625 ends with same digits",
+  language: "", 
+  description: "",
+  code:` import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	  Scanner sc=new Scanner(System.in);
+	  int n=sc.nextInt();
+	  int t=n;
+	  int dc=(int)Math.log10(n)+1;
+	  
+
+	  if((n*n)%(int)Math.pow(10,dc)==t)
+	  {
+	      System.out.print("aut");
+	  }
+	  else
+	  {
+	     System.out.println("not"); 
+	  }
+	}
+}
+
+`
+},
+{
+  title: "30. Tech Number",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int dc=sc.nextInt();
+		if(dc%2==1)
+		{
+		    System.out.println("invalid");
+		}
+		else
+		{
+		    
+		    if((int)Math.pow((n/((int)Math.pow(10,dc/2)))+(n%(int)Math.pow(10,dc/2)),2)==n)
+		    {
+		        System.out.println("tech");
+		    }
+		    else
+		    {
+		        System.out.println("not");
+		    }
+		}
+	}
+}
+`
+},
+{
+  title: "31. Peterson Num 145=1!+4!+5! =145",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int t=n;
+		int sum=0;
+		while(n>0)
+		{
+		    int r=n%10;
+		    int mul=1;
+		    for(int i=r;i>0;i--)
+		    {
+		        mul=mul*i;
+		    }
+		  sum=sum+mul;
+		  n/=10;
+		    
+		}
+		if(sum==t)
+		{
+		    System.out.print("peterson");
+		}
+		else
+		{
+		    System.out.print("not");
+		}
+	}
+}
+`
+},
+{
+  title: " 32.Pair Letters A-Z, B-Y, C-X",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char ch = sc.next().charAt(0);
+        char ch1 = sc.next().charAt(0);
+        
+        if(ch1==(char) ('Z' - (ch - 'A')))
+        {
+            System.out.println("pair letters");
+        }
+        else{
+            System.out.println(ch+" "+ch1+" are not pair letters");
+        }
+    }
+}
+`
+},
+{
+  title: " 33. Pronic Number 6=2*3 12=3*4 20=4*5.. ",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        boolean isPronic = false;
+
+        for (int i = 0; i * (i + 1) <= n; i++) 
+        {
+            if (i * (i + 1) == n)
+            {
+                isPronic = true;
+                break;
+            }
+        }
+
+        if (isPronic)
+            System.out.println("Pronic number");
+        else
+            System.out.println("Not a pronic number");
+    }
+}
+`
+},
+{
+  title: " 34. Co-Prime Numbers",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int m=sc.nextInt();
+	int min=0;
+	min=n<m?n:m;
+	for(int i=2;i<=min;i++)
+	{
+	    if(n%i==0 && m%i==0)
+	    {
+	      System.out.println("not a co-prime numbers");
+	      return;
+	    }
+	}
+	System.out.print("co-prime numbers");
+
+	}
+}
+`
+},
+{
+  title: " 35. Prime Index Substrings ",
+  language: "", 
+  description: "",
+  code:`//prime index substrings
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		String s="abcdefghijklmnopqrstuvwxyz";
+		int np=2;
+		int a=0;
+	while(true)
+	{
+	     int i=a;
+	     int end=a+np;
+	    if(a+np<s.length())
+	       System.out.print(s.substring(a,end));
+	    else 
+	       System.out.print("Remaining - "+s.substring(i));
+	   
+			System.out.println();
+		a+=np;
+		np=nextprime(np);
+		if(a>=s.length())
+		    break;
+	}
+		
+	}
+	static int nextprime(int n)
+	{
+	    for(int i=n+1;;i++)
+	    {
+	        if(isprime(i))
+	           return i;
+	    }
+	}
+	static boolean isprime(int n)
+	{
+	    for(int i=2;i<=(int)Math.sqrt(n);i++)
+	    {
+	        if(n%i==0)
+	           return false;
+	    }
+	    return true;
+	}
+}`
+},
+{
+  title: " 36. Number to Words Conversion",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+public class Main 
+{
+    static Map<Integer, String> Map = new HashMap<>();
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        Map.put(1, "one");
+        Map.put(2, "two");
+        Map.put(3, "three");
+        Map.put(4, "four");
+        Map.put(5, "five");
+        Map.put(6, "six");
+        Map.put(7, "seven");
+        Map.put(8, "eight");
+        Map.put(9, "nine");
+        Map.put(10, "ten");
+        Map.put(11, "eleven");
+        Map.put(12, "twelve");
+        Map.put(13, "thirteen");
+        Map.put(14, "fourteen");
+        Map.put(15, "fifteen");
+        Map.put(16, "sixteen");
+        Map.put(17, "seventeen");
+        Map.put(18, "eighteen");
+        Map.put(19, "nineteen");
+        Map.put(20, "twenty");
+        Map.put(30, "thirty");
+        Map.put(40, "forty");
+        Map.put(50, "fifty");
+        Map.put(60, "sixty");
+        Map.put(70, "seventy");
+        Map.put(80, "eighty");
+        Map.put(90, "ninety");
+        System.out.println(value(num));
+    }
+
+    static String value(int n)
+    {
+        if (n == 0) return "zero";
+
+        String result = "";
+
+        if (n / 10000000 > 0) 
+        {
+            result += value(n / 10000000) + " crore ";
+            n %= 10000000;
+        }
+
+        if (n / 100000 > 0) 
+        {
+            result += value(n / 100000) + " lakh ";
+            n %= 100000;
+        }
+
+        if (n / 1000 > 0) {
+            result += value(n / 1000) + " thousand ";
+            n %= 1000;
+        }
+
+        if (n / 100 > 0) {
+            result += value(n / 100) + " hundred ";
+            n %= 100;
+        }
+
+        if (n > 0) 
+        {
+            if (n < 20)
+            {
+                result += Map.get(n);
+            } 
+            else 
+            {
+                result += Map.get((n / 10) * 10);
+                if (n % 10 > 0)
+                    result += " " + Map.get(n % 10);
+            }
+        }
+
+        return result;
+    }
+}
+`
+},
+{
+  title: " 37. Addition of Two Fractions",
+  language: "", 
+  description: "",
+  code:`//Addition of two fractions
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    String str1=sc.next();
+	    String str2=sc.next();
+	    int i1=str1.indexOf("/");
+	    int i2=str2.indexOf("/");
+	   int n1=Integer.parseInt(str1.substring(0,i1));
+	   int n2=Integer.parseInt(str1.substring(i1+1));
+	   int n3=Integer.parseInt(str2.substring(0,i2));
+	   int n4=Integer.parseInt(str2.substring(i2+1));
+	   int l1=lcm(n2,n4);
+	   int sum=(l1/n2)*n1+(l1/n4)*n3;
+	   System.out.println(sum+"/"+l1);
+	}
+	static int lcm(int n1,int n2)
+	{
+	    int max=n1>n2?n1:n2;
+	    for(int i=max;;i+=max)
+	    {
+	        if(i%n1==0&&i%n2==0)
+	          return i;
+	    }
+	}
+}`
+},
+{
+  title: "38. NUMBER STRING(ZIGZAG) FINDING  wiht extra characters",
+  language: "", 
+  description: "",
+  code:`
+import java.util.*;
+class Main 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String[] num = {"zero", "six", "four", "two", "eight", "seven", "five", "one", "three", "nine"};
+        String[] order = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        char[] ch={'z','x','u','w','g','s','f','o','t','i'};
+        int[] count=new int[10];
+        lab:
+        for(int i=0;i<ch.length;i++){
+            int c=0;
+            while(true){
+                char a=ch[i];
+                if(s.contains(a+"")){
+                    String s1=num[i];
+                    int j;
+                    for(j=0;j<s1.length();j++){
+                        if(s.contains(s1.charAt(j)+""))
+                        s=s.replaceFirst((s1.charAt(j)+""),"");
+                        else
+                        break;
+                    }
+                    if(j==s1.length())
+                    c++;
+                }
+                else{
+                    count[i]=c;
+                    if(s.isEmpty()){
+                        break lab;
+                    }
+                    break;
+                }
+            }
+        }
+        for(int i=0;i<order.length;i++){
+            for(int j=0;j<num.length;j++){
+                if(order[i].equals(num[j]) && count[j]!=0){
+                    System.out.println(order[i]+" -> "+count[j]);
+                }
+            }
+        }
+    }
+}`
+},
+{
+  title: "39. Reverse  the string of size N",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int n = sc.nextInt();
+        String temp = "";
+
+        
+        for (int i = 0; i < s.length(); i++) 
+        {
+            char ch = s.charAt(i);
+            if (Character.isLetter(ch)||"'".equals(ch+"")) 
+            {
+                temp += ch;
+            }
+        }
+
+        int i;
+    
+        for (i = 0; i + n <= temp.length(); i += n)
+        {
+            String sub = temp.substring(i, i + n);
+            for (int j = sub.length() - 1; j >= 0; j--)
+            {
+                System.out.print(sub.charAt(j));
+            }
+            System.out.print(" ");
+        }
+
+      
+        if (i < temp.length()) 
+        {
+            String sub = temp.substring(i);
+            for (int j = sub.length() - 1; j >= 0; j--)
+            {
+                System.out.print(sub.charAt(j));
+            }
+        }
+    }
+}
+`
+},
+{
+  title: "40. Date Sorting using arrays",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String date[] = s.split(" ");
+        
+        for (int i = 0; i < date.length - 1; i++)
+        {
+            for (int j = 0; j < date.length - i - 1; j++)
+            {
+                String dat1[] = date[j].split("-");
+                String dat2[] = date[j+1].split("-");
+                
+                int y1 = Integer.parseInt(dat1[2]);
+                int y2 = Integer.parseInt(dat2[2]);
+                int m1 = valueofMonth(dat1[1]);
+                int m2 = valueofMonth(dat2[1]);
+                int d1 = Integer.parseInt(dat1[0]);
+                int d2 = Integer.parseInt(dat2[0]);
+                
+               
+                if (y1 > y2 || (y1 == y2 && m1 > m2) || (y1 == y2 && m1 == m2 && d1 > d2))
+                {
+                        String temp = date[j];
+                        date[j] = date[j+1];
+                        date[j+1] = temp;
+                }
+                
+                else
+                {
+                    System.out.println("Invalid date details");
+                    return;
+                }
+            }
+        }
+        
+        System.out.println(Arrays.toString(date));
+    }
+
+    static int valueofMonth(String s)
+    {
+        String month[] = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+        for (int i = 0; i < month.length; i++)
+        {
+            if (s.equalsIgnoreCase(month[i]))
+            {
+                return i + 1;
+            }
+        }
+        return -1;
+    }
+}
+`
+},
+{
+  title: "41.Longest Common Prefix",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of strings you want to check");
+        int n = sc.nextInt();
+        String a[] = new String[n];
+        int c = 0;
+        
+        for(int i = 0; i < n; i++)
+        {
+            a[i] = sc.next();
+        }
+        
+        for(int i = 0; i < a[0].length(); i++)
+        {  
+            char ch = a[0].charAt(i);
+            int j;
+            
+            for(j = 0; j < n; j++)
+            {
+                if(i >= a[j].length() || a[j].charAt(i) != ch)
+                {
+                    break; 
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            
+            if(j == n)
+            {
+                c++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        if(c == 0)
+        {
+            System.out.println("There is no prefix");
+        }
+        else
+        {
+            System.out.println("Longest Common Prefix: " + a[0].substring(0, c));
+        }
+    }
+}
+`
+},
+{
+  title: "42. new int[]{10, 20, 3, 5, 1, 11 };",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{ 
+	    Scanner sc=new Scanner(System.in);
+	    String s=sc.nextLine();
+	    
+		 //new int[]{10, 20, 3, 5, 1, 11 };
+		 
+		 String sub=s.substring(10,s.length()- 3);
+		 
+		 String t[]=sub.split(", ");
+		 for(int i=0;i<t.length;i++)
+		 {
+		     
+		     if(isPrime(Integer.parseInt(t[i])))
+		     {
+		         System.out.print(t[i]+" ");
+		     }
+		 }
+	}
+	static boolean isPrime(int n)
+	{
+	    
+	    if(n<=1)
+	    {
+	        return false;
+	    }
+	    for(int i=2;i<=(int)Math.sqrt(n);i++)
+	    {
+	        if(n%i==0)
+	        {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+}`
+},
+{
+  title: "43. Day Sorting using arrays",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		
+		String a[]=s.split(" ");
+		int n=a.length;
+		for(int i=0;i<n-1;i++)
+		{
+		    for(int j=0;j<n-i-1;j++)
+		    {
+		        int d1=valofday(a[j]);
+		        int d2=valofday(a[j+1]);
+		        if(d1>d2)
+		        {
+		            String temp=a[j];
+		            a[j]=a[j+1];
+		            a[j+1]=temp;
+		        }
+		    }
+		}
+		System.out.println(Arrays.toString(a));
+	}
+	
+	static int valofday(String s)
+	{
+	  String weekday[]={"sunday","monday","tuesday","wednesday","thursday","friday","saturday"};  
+	  for(int i=0;i<weekday.length;i++)
+	  {
+	      if(s.equals(weekday[i]))
+	      {
+	          return i;
+	      }
+	  }
+	  return -1;
+	}
+}`
+},
+{
+  title: "44. Phone Number - String Conversion",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		String a[]=s.split(" ");
+		String out="";
+		for (int i=0;i<a.length;i++) 
+		{ 
+		    if((!a[i].equals("double"))&&(!a[i].equals("triple")))
+		    {
+		         out+=val(a[i]);
+		    }
+		    else if(a[i].equals("double"))
+		    {
+		         out+=val(a[i+1]);
+		         out+=val(a[i+1]);
+		         i++;
+		    }
+		    else if(a[i].equals("triple"))
+		    {
+		         out+=val(a[i+1]);
+		         out+=val(a[i+1]);
+		         out+=val(a[i+1]);
+		         i++;
+		         
+		    }
+		         
+		}
+		System.out.println(out);
+		
+	}
+	static int val(String s)
+	{
+	    String temp[]={"one","two","three","four","five","six","seven","eight","nine"};
+	    for(int i=0;i<temp.length;i++)
+	    {
+	        if(temp[i].equals(s))
+	        {
+	            return i+1;
+	        }
+	        
+	    }
+	    return -1;
+	}
+}
+`
+},
+{
+  title: "45. Special Palindrome",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    /*A@b#b@a*/
+		Scanner sc=new Scanner(System.in);
+		String S=sc.nextLine();
+         int s=0,e=S.length()-1;
+         while(s<e)
+         { 
+             if(Character.isLetter(S.charAt(s))&&Character.isLetter(S.charAt(e)))
+             {
+                if((S.charAt(s)+"").equalsIgnoreCase(S.charAt(e)+""))
+                {
+                    s++;
+                    e--;
+                }
+                else
+                {
+                  System.out.println("not a special palindrome"); 
+                  return;
+                }
+                
+             }
+             else if(!Character.isLetter(S.charAt(s))&&!Character.isLetter(S.charAt(e)))
+             {   
+                 e--;
+                 s++;
+             }
+             else if(Character.isLetter(S.charAt(s)))
+             {   
+                 e--;
+                 
+             }
+             else
+             {
+                 s++;
+             }
+         }
+        if(s>e)
+        {
+            System.out.println("Not a special palindrome");
+        }
+        else{
+             System.out.println("special palindrome");
+        }
+	}
+}`
+},
+{
+  title: " 46. Password Validation",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+class Main 
+{
+    public static void main (String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int len=s.length();
+        if(len>=8)
+        {
+            int uc=0,lc=0,dc=0,sp=0,space=0;
+            for(int i=0;i<len;i++)
+            {
+                char ch=s.charAt(i);
+                if(ch>='A'&&ch<='Z')
+                {
+                   uc++; 
+                }
+                else if(ch>='a'&&ch<='z')
+                {
+                   lc++; 
+                }
+                else if(ch>='0'&&ch<='9')
+                {
+                   dc++; 
+                }
+                else if(ch==' ')
+                {
+                    space++;
+                }
+                else
+                {
+                    sp++;
+                }
+            
+            }
+            if(uc!=0&&lc!=0&&dc!=0&&sp!=0&&space==0)
+            {
+                System.out.println("valid Password");
+            }
+        }
+        else
+        {
+            System.out.println("Invalid Password");
+        }
+        
+    }
+}`
+},
+{
+  title: " 47. Aadhar Number Validation",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    Scanner sc=new Scanner(System.in);
+	    	String s=sc.nextLine();
+	    	int len=s.length();
+	    	if(len==12||len==14)
+	    	{
+	    	    if(len==12)
+	    	    {
+	    	        int c=0;
+	    	        for(int i=0;i<len;i++)
+	    	        {
+	    	            char ch=s.charAt(i);
+	    	            if(ch>='0'&&ch<='9')
+	    	            {
+	    	                c++;
+	    	            }
+	    	        }
+	    	        if(c==len)
+	    	        {
+	    	            System.out.println("valid aadhar");
+	    	        }
+	    	        else
+	    	        {
+	    	             System.out.println("Invalid aadhar");  
+	    	        }
+	    	    }
+	    	    else
+	    	    {
+	    	        int c=0;
+	    	        for(int i=0;i<len;i++)
+	    	        {
+	    	            char ch=s.charAt(i);
+	    	            if((i==4||i==9)&&ch==' ')
+	    	            {
+	    	                c++;
+	    	            }
+	    	            else if(ch>='0'&&ch<='9'&&i!=4&&i!=9)
+	    	            {
+	    	                c++;
+	    	            }
+	    	        }
+	    	        if(c==len)
+	    	        {
+	    	            System.out.println("valid Aadhar");
+	    	        }
+	    	        else
+	    	        {
+	    	            System.out.println("Invalid aadhar");
+	    	        }
+	    	        
+	    	    }
+	    	}
+	    	else
+	    	{
+	    	    System.out.println("Invalid Aadhar");
+	    	    
+	    	}
+	}
+}`
+},
+{
+  title: "48. PAN Card Validation",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+	    Scanner sc=new Scanner(System.in);
+	    String s=sc.nextLine();
+	    int len=s.length();
+	    
+	    if(len==10)
+	    {
+	        int c=0;
+	        for(int i=0;i<len;i++)
+	        {
+	            char ch=s.charAt(i);
+	            if((i==0||i==1||i==2||i==4||i==9)&&Character.isUpperCase(ch))
+	            {
+	                c++;
+	            }
+	            else if(i==3&&(ch=='P'||ch=='C'||ch=='A'||ch=='T'||ch=='H'||ch=='F'))
+	            {
+	                c++;
+	            }
+	            else if((i>=5&&i<=8)&&Character.isDigit(ch))
+	            {
+	                c++;
+	            }
+	        }
+	        if(c==10)
+	        {
+	            System.out.println("valid PAN");
+	        }
+	        else
+	        {
+	            System.out.println("Invalid PAN");
+	            
+	        }
+	    }
+	    else
+	    {
+	        System.out.println("Invalid PAN");
+	    }
+	}
+}`
+},
+{
+  title: " 49. Group Anagrams long approach",
+  language: "", 
+  description: "",
+  code:`
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=6;
+		String a[]={"tea","tan","eat","ate","nat","bat"};
+		ArrayList<String> al=new ArrayList<>(Arrays.asList(a));
+		ArrayList<String> bl=new ArrayList<>();
+	    ArrayList<ArrayList<String>> cl=new ArrayList<>();
+    	for(int i=0;i<al.size();i++)
+    	{
+              int c=1;
+    	    for(int j=i+1;j<al.size();j++)
+    	    {
+    	        if(ismatch(al.get(i),al.get(j)))
+    	        {
+    	            if(c==1)
+    	            {
+    	                bl.add(al.get(i));
+    	                bl.add(al.get(j));
+    	                al.remove(j);j--;
+    	            }
+    	            else
+    	            {
+    	                bl.add(al.get(j));
+    	                al.remove(j);
+    	                j--;
+    	            }
+    	            c++;
+    	        }
+    	    }
+    	    if(c==1)
+    	    {
+    	        bl.add(al.get(i));
+    	    }
+    	    cl.add(new ArrayList<>(bl));
+    	    bl.clear();
+    	}
+    	if(cl.size()==1)
+    	{
+    	   ArrayList tl=cl.get(0);
+    	   System.out.print("[");
+    	   for(int i=0;i<tl.size();i++)
+    	   {   if(i==tl.size()-1)
+    	         System.out.print("\""+tl.get(i)+"\"");
+    	       else
+    	         System.out.print("\""+tl.get(i)+"\""+",");
+    	   }
+    	   System.out.print("]");
+    	}   	   
+    	else
+    	{
+            	    System.out.print("[");
+            	for(int i=0;i<cl.size();i++)
+            	{
+            	    ArrayList tl=cl.get(i);
+            	    System.out.print("["+"\"");
+            	    for(int j=0;j<tl.size();j++)
+            	    {
+            	        if(j==tl.size()-1)
+            	          System.out.print(tl.get(j)+"\"");
+            	        else
+            	           System.out.print(tl.get(j)+"\""+","); 
+            	    }
+            	    if(i==cl.size()-1)
+            	      System.out.print("]");
+            	    else
+            	      System.out.print("],");
+            	      
+            	    tl.clear();
+            	}
+            	System.out.print("]");
+    	}
+    	
+		
+	}
+	static boolean ismatch(String s1,String s2)
+	{
+	    if(s1.length()!=s2.length())
+	      return false;
+	     
+	     for(int i=0;i<s1.length();i++)
+	     {
+	         char ch=s1.charAt(i);
+	         if(!s2.contains(ch+""))
+	            return false;
+	         else
+	           s2=s2.replace(ch+"","");
+	     }
+	     return s2.isEmpty();
+	}
+}`
+},
+{
+  title: " 50. Group Anagrams short approach using collections",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		 String[] a = {"eat", "tea", "tan", "ate", "nat", "bat"};
+		 HashMap<String,ArrayList<String>> hm=new LinkedHashMap<>();
+		 for(String s:a)
+		 {
+		     char ch[]=s.toCharArray();
+		     Arrays.sort(ch);
+		     String t=String.valueOf(ch);
+		     hm.putIfAbsent(t,new ArrayList<>());
+		     hm.get(t).add(s);
+		 }
+		 for(Map.Entry<String,ArrayList<String>> e:hm.entrySet())
+		 {
+		     System.out.println(e.getValue());
+		 }
+
+	}
+}`
+},
+{
+  title: " 51. Pythagorean Triplet",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[] = new int[n];
+
+        for (int i = 0; i < n; i++) 
+        {
+            a[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n; i++)
+        {
+             int key = a[i] * a[i]; 
+            for (int j = 0; j < n; j++)
+            {
+                for (int k = j + 1; k < n; k++) 
+                {
+                    if (j != i && k != i)
+                    {
+                        int sum = a[j] * a[j] + a[k] * a[k];
+                        if (sum == key)
+                        {
+                            System.out.println(a[j] + "*" + a[j] + " + " + a[k] + "*" + a[k] + " = " + a[i] + "*" + a[i]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+`
+},
+{
+  title: " 52. Date Sorting using Collections",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+import java.text.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		String[] a = {"10-Jan-2002", "05-Mar-1998", "12-Dec-2020", "25-Jul-2015", "01-Jan-2002"};
+		ArrayList<String> str=new ArrayList<>(Arrays.asList(a));
+		SimpleDateFormat d=new SimpleDateFormat("dd-MMM-yyyy");
+		str.sort((d1,d2)->
+		{
+		   try
+		   {
+		       return d.parse(d1).compareTo(d.parse(d2));
+		   }
+		   catch(Exception e)
+		   {
+		       throw new RuntimeException(e);
+		   }
+		        
+		   
+		});
+		ListIterator al=str.listIterator();
+		while(al.hasNext())
+		{
+		    System.out.println(al.next());
+		}
+		
+	}
+}`
+},
+{
+  title: " 53. Rotate Array and print each rotation",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[]=new int[n];
+	
+		
+		for (int i=0;i<n ;i++)
+		{
+		   a[i]=sc.nextInt();
+		   
+		}
+		
+		for(int i=0;i<n;i++)
+		{
+		    int k=a[0];
+		    
+		     for(int j=0;j<n-1;j++)
+		     {
+		         a[j]=a[j+1];
+		     }
+		     a[n-1]=k;
+		    
+		    for (int m=0;m<n ;m++)
+		    {
+		        System.out.print(a[m]+" ");
+		   
+	    	}
+	    	System.out.println();
+		     
+		}
+	}
+}`
+},
+{
+  title: " 54. Longest Subarray with Sum K",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+class Main
+{
+    public static void main(String[]args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+       
+            int a[]=new int[n];
+            int b[]=new int[n];
+            for(int i=0;i<n;i++)
+            {
+                a[i]=sc.nextInt();
+            }
+            int key=sc.nextInt();
+            int max=0;
+            for(int i=0;i<n;i++)
+            {
+                for(int j=i;j<n;j++)
+                {   int sum=0,c=0;
+                    for(int k=i;k<=j;k++)
+                    {
+                       
+                       sum+=a[k];
+                       c++;
+                       
+                    }
+                    if(sum==key)
+                    {  
+                        if(c>max)
+                        {   
+                            max=c;
+                                int l=0;
+                                for(int k=i;k<=j;k++)
+                                {
+                                   b[l]=a[k];
+                                   l++;
+                                }
+                        }
+                             
+                            
+                    }
+                    
+                }
+            }
+            for(int i=0;i<max;i++)
+            {
+                System.out.print(b[i]+" ");
+            }
+    }
+}`
+},
+{
+  title: " 55. Cricket Match 2D Array",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int r=sc.nextInt();
+	    int c=sc.nextInt();
+	    int a[][]=new int[r][c];
+	    for(int i=0;i<r;i++)
+	    {
+	        for(int j=0;j<c;j++)
+	        {
+	            a[i][j]=sc.nextInt();  
+	        }
+	    }
+	    
+	    for(int i=0;i<r;i++)
+	    { int plofmat=0,pl=0,totscore=0;
+	        for(int j=0;j<c;j++)
+	        {
+	            if(a[i][j]>plofmat)
+	            {
+	                plofmat=a[i][j];
+	                pl=i+1;
+	            }
+	            totscore+=a[i][j];
+	              
+	        }
+	        System.out.println("match "+(i+1)+" player "+pl+" with score "+plofmat);
+	        System.out.println("match "+(i+1)+" Total score is "+totscore);
+	    }
+	    int max=0,pl=0;
+	    for(int i=0;i<c;i++)
+	    {  int totscore=0;
+	        for(int j=0;j<r;j++)
+	        {
+	            
+	            totscore+=a[j][i];
+	              
+	        }
+	        
+	        System.out.println("Player "+(i+1)+" Total score is "+totscore);
+	        if(totscore>max)
+	        {
+	            max=totscore;
+	            pl=i+1;
+	        }
+	    }
+	    System.out.println("Player of the season is player "+pl+" with the score "+max);
+	    
+	   
+	    
+	}
+}`
+},
+{
+  title: " 56. Prime Column Sum if not replace by *",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+class Main
+{
+    public static void main (String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int r=sc.nextInt();
+        int c=sc.nextInt();
+        int a[][]=new int[r][c];
+        String b[][]=new String[r][c];
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                a[i][j]=sc.nextInt();
+            }
+        }
+        for(int i=0;i<c;i++)
+        {
+            int sum=0;
+            for(int j=0;j<r;j++)
+            {
+               sum+=a[j][i];
+            }
+            if(isPrime(sum))
+            {
+               for(int j=0;j<r;j++)
+               {
+                   b[j][i]=a[j][i]+"";
+               }
+            }
+            else
+            {
+                for(int j=0;j<r;j++)
+               {
+                   b[j][i]="*";
+               }
+            }
+        }
+        for(int i=0;i<r;i++)
+        {
+            
+            for(int j=0;j<c;j++)
+            {
+                System.out.print(b[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    
+    static boolean isPrime(int n)
+    {
+        int fc=0;
+        for(int i=1;i<=n;i++)
+        {
+            if(n%i==0)
+            {
+                fc++;
+            }
+            
+        }
+        return fc==2;
+    }
+}`
+},
+{
+  title: " 57. Dice Game Simulation (minutes) prime , even odd , pattern and sum",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter time in minutes");
+        int n = sc.nextInt();
+        int n1 = n * 2;
+        int primecount = 0, even = 0, odd = 0;
+        ArrayList<Integer> al = new ArrayList<>();
+        
+       
+        for (int i = 0; i < n1; i++)
+        {
+            for (int j = 0; j < 4; j++) 
+            { 
+                int num = (int)(Math.random() * 6) + 1;
+                if (isprime(num))
+                {
+                    primecount++;
+                    al.add(num);
+                }
+                
+                if (num % 2 == 0) {
+                    even++;
+                } else {
+                    odd++;
+                }
+            }
+        }
+
+        System.out.println("Prime numbers count -> " + primecount);
+        System.out.printf("even percentage -> %.2f ", ((float)(even) / (n1 * 4)) * 100);
+        System.out.println();
+        System.out.printf("odd percentage -> %.2f ", ((float)(odd) / (n1 * 4)) * 100);
+        System.out.println();
+
+        
+        int c = 0; 
+        for (int i = 0; c + i <= al.size(); i++) 
+        {
+            for (int j = 0; j <= i; j++) 
+            {
+                System.out.print(al.get(c++) + " ");
+               
+            }
+            System.out.println();
+        }
+            int sum = 0;
+            while (c < al.size()) 
+            {
+                sum += al.get(c);
+                c++;
+            }
+            System.out.println(sum);
+        
+    }
+
+    static boolean isprime(int n)
+    {
+        if (n <= 1)
+            return false;
+        for (int i = 2; i <= (int)Math.sqrt(n); i++)
+        {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+}
+`
+},
+{
+  title: "  58.Replacing special characters with space in 2D array",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        int r=sc.nextInt();
+        int c=sc.nextInt();
+        char a[][]=new char[r][c];
+        
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                a[i][j]=sc.next().charAt(0);
+            }
+        }
+        
+        String s="";
+        for(int i=0;i<c;i++)
+        {
+            for(int j=0;j<r;j++)
+            {
+                s+=a[j][i];
+            }
+        }
+       // System.out.println(s);
+        String temp="";
+        for(int i=0;i<s.length();)
+        {
+            char ch=s.charAt(i);
+            
+            if(!Character.isDigit(ch)&&!Character.isLetter(ch))
+            {
+               
+                while(i<s.length() && !Character.isDigit(s.charAt(i)) && !Character.isLetter(s.charAt(i)))
+                {
+                    i++;
+                }
+                temp+=" ";
+            }
+            else
+            {
+                temp+=ch;
+                i++;
+            }
+        }
+        
+        System.out.println(temp); 
+    }
+}
+`
+},
+{
+  title: " 59. Identity Matrix or not",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int r=sc.nextInt();
+		int c=sc.nextInt();
+		int a[][]=new int[r][c];
+	    int i;
+	    kubera:
+		for( i=0;i<r;i++)
+		{   int j;
+		    for( j=0;j<c;j++)
+		    {
+		        a[i][j]=sc.nextInt();
+		        if(!(((i==j)&&(a[i][j]==1))||((i!=j)&&(a[i][j]==0))))
+		          break kubera;
+		    }
+		    if(j!=c)
+		    {
+		       System.out.println("not an identity matrix");
+		        break; 
+		    }
+		}
+		if(i==r)
+		{
+		    System.out.println("identity");
+		}
+	    
+	}	
+	    
+	
+}`
+},
+{
+  title: " 60. Spiral Matrix Print",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int r=sc.nextInt();
+	    int c=sc.nextInt();
+	    int a[][]=new int[r][c];
+	    for(int i=0;i<r;i++)
+	    {
+	        for(int j=0;j<c;j++)
+	        {
+	            a[i][j]=sc.nextInt();  
+	        }
+	    }
+	    int top=0,left=0,bottom=r-1,right=c-1;
+	    while(top<=bottom&&left<=right)
+	    {
+	        for(int j=left;j<=right;j++)
+	        {
+	           System.out.print(a[top][j]+" "); 
+	        }
+	         top++;
+	        for(int i=top;i<=bottom;i++)
+	        {
+	           System.out.print(a[i][right]+" "); 
+	        }
+	        right--;
+	        
+	        for(int i=right;i>=left&&top<=bottom;i--)
+	        {
+	            System.out.print(a[bottom][i]+" "); 
+	        }
+	        bottom--;
+	        for(int i=bottom;i>=top&&left<=right;i--)
+	        {
+	            System.out.print(a[i][left]+" "); 
+	        }
+	        left++;
+	        
+	    }
+	    
+	}
+}`
+},
+{
+  title: " 61.mobile pattern check using 2D array",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+class Main
+{
+    static Scanner sc = new Scanner (System.in);
+    public static void main (String[] args) 
+    {
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int a[][] = new int[r][c];
+        int num = 1;
+        for(int i = 0;i<r;i++)
+        {
+            for(int j = 0;j<c;j++)
+            {
+                a[i][j] = num++;
+            }
+        }
+
+        String s = sc.next();
+        int count = 0;
+
+        for(int k = 0; k < s.length()-1; k++)
+        {
+            int n1 = Integer.parseInt("" + s.charAt(k));
+            int n2 = Integer.parseInt("" + s.charAt(k+1));
+            int found = 0;
+            for(int i = 0;i<r;i++)
+            {
+                for(int j = 0;j<c;j++)
+                {
+                    if(a[i][j] == n1)
+                    {
+                        if(j-1 >= 0 && a[i][j-1] == n2) 
+                        found = 1;
+                        if(j+1 < c && a[i][j+1] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && a[i-1][j] == n2) 
+                        found = 1;
+                        if(i+1 < r && a[i+1][j] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && j-1 >= 0 && a[i-1][j-1] == n2) 
+                        found = 1;
+                        if(i-1 >= 0 && j+1 < c && a[i-1][j+1] == n2) 
+                        found = 1;
+                        if(i+1 < r && j-1 >= 0 && a[i+1][j-1] == n2) 
+                        found = 1;
+                        if(i+1 < r && j+1 < c && a[i+1][j+1] == n2) 
+                        found = 1;
+                    }
+                }
+            }
+
+            if(found == 1)
+                count++;
+            else
+                break;
+        }
+
+        if(count == s.length()-1)
+            System.out.print("Valid Pattern");
+        else
+            System.out.print("Invalid Pattern");
+    }
+}`
+},
+{
+  title: " 62. Reverse 2D Array Row-wise",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int r=sc.nextInt();
+		int c=sc.nextInt();
+		int a[][]=new int[r][c];
+		for(int i=0;i<r;i++)
+		{
+		    for(int j=0;j<c;j++)
+		    {
+		        a[i][j]=sc.nextInt();
+		    }
+		}
+	    int s=0,e=r-1;
+	    int temp[]=new int[c];
+	    while(s<e)
+	    {
+	        temp=a[s];
+	        a[s]=a[e];
+	        a[e]=temp;
+	        s++;
+	        e--;
+	    }
+	    for(int i=0;i<r;i++)
+		{
+		    for(int j=0;j<c;j++)
+		    {
+		       System.out.print(a[i][j]+" ");
+		    }
+		    System.out.println();
+		}
+	}
+}`
+},
+{
+  title: " 63. Row and Column Sum in 2D Array",
+  language: "", 
+  description: "",
+  code:`import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[][]=new int[n][n];
+		for(int i=0;i<n;i++)
+		{
+		    for(int j=0;j<n;j++)
+		    {
+		       a[i][j]=sc.nextInt(); 
+		    }
+		}
+		
+		for(int i=0;i<n;i++)
+		{   int sumrow=0,sumcol=0;
+		    for(int j=0;j<n;j++)
+		    {
+		        System.out.print(a[i][j]+" ");
+		       sumrow+=a[i][j];
+		    }
+		    System.out.println(sumrow);
+		}
+		for(int i=0;i<n;i++)
+		{   int sumcol=0;
+		    for(int j=0;j<n;j++)
+		    {
+		        sumcol+=a[j][i];
+		    }
+		   System.out.print(sumcol+" ");
+		}
+	}
+}
+`
+},
+{
+  title: " 64. Maximum Consecutive Ones III(LEETCODE 1004)",
+  language: "", 
+  description: "",
+  code:`/*Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+Output: 6
+Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.*/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+		    a[i]=sc.nextInt();
+		}
+		int k=sc.nextInt();
+		int s=0,c=0,max=0;
+		for(int i=0;i<n;i++)
+		{
+		    if(a[i]==0)
+		      c++;
+		      
+		    while(c>k)
+		    {
+		        if(a[s]==0)
+		          c--;
+		        
+		        s++;
+		    }
+		    max=Math.max(max,i-s+1);
+		}
+		System.out.println(max);
+		
+	}
+} 
+    or
+    public class Main
+{
+	public static void main(String[] args) 
+	{
+		int k=2,maxlen=0; 
+		int a[]={1,1,1,0,0,0,1,1,1,1,0};
+		
+		for(int i=0;i<a.length;i++)
+		{
+		    for(int j=i;j<a.length;j++)
+		    {
+		        int z=countofZero(i,j,a);
+		        if(z==k)
+		        {
+		            int len=0;
+		           for(int l=i;l<=j;++)
+		               len++;
+		            if(len>maxlen)
+		               maxlen=len;
+		        }
+		    }
+		}
+		System.out.println(maxlen);
+	}
+	static int countofZero(int s,int e,int b[])
+	{
+	    int c=0;
+	    for(int i=s;i<=e;i++)
+	    {
+	        if(b[i]==0)
+	          c++;
+	    }
+	    return c;
+	}
+}`
+},
+{
+  title: " 65. Longest Alternating Substring with 0 and 1",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+class Main
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int count0 = 0, count1 = 0;
+        for (char c : s.toCharArray())
+        {
+            if (c == '0') 
+                count0++;
+            else 
+                count1++;
+        }
+        int ans = 2 * Math.min(count0, count1);
+        if (count0 != count1) 
+            ans++;
+        System.out.println(ans);
+    }
+}`
+},
+{
+  title: " 66. Asteroid Collision (Bubble blast (Leetcode - 735))",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		int n=6;
+		int a[]={3,5,-6,2,-1,4};
+	    Stack<Integer> s=new Stack<>();
+	    for(int i:a)
+	    {
+	        if(i>0)
+	          s.push(i);
+	        else
+	        {
+	            while(!s.isEmpty()&&s.peek()>0&&s.peek()<Math.abs(i))
+	                s.pop();
+	            
+	            if(s.isEmpty()||s.peek()<0)
+	               s.push(i);
+	            else if(i+s.peek()==0)
+	              s.pop();
+	        }
+	    }
+	    int res[]=new int[s.size()];
+	    for(int i=s.size()-1;i>=0;i--)
+	    {
+	        res[i]=s.pop();
+	    }
+	    System.out.println(Arrays.toString(res));
+		   
+	}
+}
+`
+},
+{
+  title: " 67. ZigZag Matrix (cross diagonal pattern)",
+  language: "", 
+  description: "",
+  code:`/*4
+1       3       4       10
+2       5       9       11
+6       8       12      15
+7       13      14      16*/
+import java.util.*;
+public class Main {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // Example: 4
+        int[][] a = new int[n][n];
+        int num = 1,k=0;
+        for (int col = 0; col < n; col++)
+        {
+            int i = 0, j = col;
+            while (j >= 0 && i < n)
+            {
+                if(k%2==0)
+                a[i][j] = num++;
+                else
+                a[j][i] = num++;
+                i++;
+                j--;
+            }
+            k++;
+        }
+        for (int row = 1; row < n; row++) 
+        {
+            int i = row, j = n - 1;
+            while (i < n && j >= 0)
+            {
+                if(k%2==0)
+                a[i][j] = num++;
+                else
+                a[j][i] = num++;
+                i++;
+                j--;
+            }
+            k++;
+        }
+        for (int i = 0; i < n; i++) 
+        {
+            for (int j = 0; j < n; j++) 
+            {
+                System.out.print(a[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}`
+},
+{
+  title: " 68. Maximum Profit from Stock Prices (Leetcode 121)",
+  language: "", 
+  description: "",
+  code:`class Solution 
+{
+    public int maxProfit(int[] prices) 
+    {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) 
+        {
+            if (price < minPrice)
+                minPrice = price;
+            else if (price - minPrice > maxProfit)
+                maxProfit = price - minPrice;
+        }
+
+        return maxProfit;
+    }
+}
+`
+},
+{
+  title: " 69. 3Sum (Leetcode 15)",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+
+class Solution 
+{
+    public List<List<Integer>> threeSum(int[] a) 
+    {
+        List<List<Integer>> al = new ArrayList<>();
+        Arrays.sort(a); 
+        int n = a.length;
+
+        for (int i = 0; i < n - 2; i++) 
+        {
+            if (i > 0 && a[i] == a[i - 1]) 
+                continue;
+
+            int s = i + 1;
+            int e = n - 1;
+
+            while (s < e) 
+            {
+                int sum = a[i] + a[s] + a[e];
+
+                if (sum == 0) 
+                {
+                    List<Integer> bl = new ArrayList<>();
+                    bl.add(a[i]);
+                    bl.add(a[s]);
+                    bl.add(a[e]);
+                    al.add(bl);
+                    while (s < e && a[s] == a[s + 1]) s++;
+                    while (s < e && a[e] == a[e - 1]) e--;
+
+                    s++;
+                    e--;
+                } 
+                else if (sum < 0) 
+                {
+                    s++;
+                } 
+                else 
+                {
+                    e--;
+                }
+            }
+        }
+        return al;
+    }
+}
+`
+},
+{
+  title: " 70. Container With Most Water (Leetcode 11)",
+  language: "", 
+  description: "",
+  code:`class Solution 
+{
+    public int maxArea(int[] height) 
+    {
+        int s=0,e=height.length-1;
+        int maxa=0;
+        while(s<e)
+        {
+            int width=e-s;
+            int length=Math.min(height[s],height[e]);
+            int area=length*width;
+            if(area>maxa)
+              maxa=area;
+
+             if(height[s]<height[e])
+                 s++;
+             else
+                e--;
+
+        }
+        return maxa;
+        
+    }
+}`
+},
+{
+  title: " 71. Add Two Numbers (Leetcode 2)",
+  language: "", 
+  description: "",
+  code:`class Solution
+ {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) 
+    {
+        ListNode dummy=new ListNode();
+        ListNode curr=dummy;
+        int carry=0; 
+        while(l1!=null||l2!=null||carry!=0)
+        {
+            int v1=l1!=null?l1.val:0;
+            int v2=l2!=null?l2.val:0;
+            int sum=v1+v2+carry;
+            carry=sum/10;
+            curr.next=new ListNode(sum%10);
+            curr=curr.next;
+            if(l1!=null)
+             l1=l1.next;
+            if(l2!=null)
+             l2=l2.next;
+        }
+        
+        return dummy.next;
+    }
+}
+`
+},
+{
+  title: " 72. N-Queens Problem (Leetcode 51)",
+  language: "", 
+  description: "",
+  code:`import java.util.*;
+class Solution 
+{
+    static int count = 0;
+    static List<List<String>> l = new ArrayList<>();
+    static ArrayList<String> al=new ArrayList<>();
+    public List<List<String>> solveNQueens(int n) 
+    {
+        count = 0;
+         l = new ArrayList<>();
+
+        char a[][] = new char[n][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                a[i][j]='.';
+            }
+        }
+        Queens(a,0,n);
+        
+        return l;
+    }
+    static void Queens(char a[][],int row,int n)
+    {
+         al=new ArrayList<>();
+        if(row==n)
+        {
+            count++;
+           
+            for(char i[]:a)
+            {
+          
+            
+            String h="";
+            for(int k=0;k<i.length;k++)
+            {
+               h=h+i[k]+"";
+            }
+            al.add(h);
+           
+            }
+             l.add(al);
+             return;
+        }
+        for(int col=0;col<n;col++)
+        {
+            if(isValid(a,row,col,n))
+            {
+                a[row][col]='Q';
+                Queens(a,row+1,n);
+                a[row][col]='.';
+            }
+        }
+    }
+    static boolean isValid(char a[][],int row,int col,int n)
+    {
+        //row wise checking
+        for(int i=0;i<=row;i++)
+        {
+            if(a[i][col]=='Q')
+            {
+                return false;
+            }
+        }
+        //left up diagonal   
+        for(int i=row,j=col;i>=0&&j>=0;i--,j--)
+        {
+            if(a[i][j]=='Q')
+            {
+                return false;
+            }
+           
+        }   
+        //right up diagonal
+        for(int i=row,j=col;i>=0&&j<n;i--,j++)
+        {
+            if(a[i][j]=='Q')
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}`
+},
+{
+  title: " 73. Generate Parentheses (Leetcode 22)",
+  language: "", 
+  description: "",
+  code:`class Solution 
+{
+    public List<String> generateParenthesis(int n) 
+    {
+        List<String> a=new ArrayList<>();
+        solve(a,0,0,"",n);
+        return a;
+
+    }
+    public void solve(List<String> a,int open,int close,String res,int n)
+    {
+        if(res.length()==2*n)
+        {
+            a.add(res);
+            return;
+        }
+        if(open<n)
+          solve(a,open+1,close,res+"(",n);
+        if(close<open)
+            solve(a,open,close+1,res+")",n);
+         
+    }
+}`
+},
+{
+  title: " 74. Letter Combinations of a Phone Number (Leetcode 17)",
+  language: "", 
+  description: "",
+  code:`class Solution 
+{
+    public List<String> letterCombinations(String digits)
+    {
+        List<String> res=new ArrayList<>();
+        String a[]=new String[digits.length()];
+        String w[]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        for(int i=0;i<digits.length();i++)
+        {
+            a[i]=w[digits.charAt(i)-48];
+        }
+        solve(a,res,0,"");
+        return res;
+    }
+    static void solve(String a[],List<String> x,int k,String s)
+    {
+        if(k==a.length)
+        {
+            x.add(s);
+            return;
+        }
+        for(int i=0;i<a[k].length();i++)
+        {
+            s+=a[k].charAt(i);
+            solve(a,x,k+1,s);
+            s=s.substring(0,s.length()-1);
+        }
+    }
+}`
+},
+{
+  title: " 75. Subsets (Leetcode 78) & Subsets II (Leetcode 90)",
+  language: "", 
+  description: "",
+  code:`class Solution 
+{
+    public List<List<Integer>> subsets(int[] nums) 
+    {
+         Arrays.sort(nums);
+        List<List<Integer>> x=new ArrayList<>();
+        List<Integer> y = new ArrayList<>();
+        generate(x,y,0,nums);
+        return x;
+    }
+    public void generate(List<List<Integer>> x,List<Integer> y,int k,int a[])
+    {
+        if(k==a.length)
+        {
+             x.add(new ArrayList(y));
+            return;
+        }         
+             y.add(a[k]);
+            generate(x,y,k+1,a);
+            y.remove(y.size()-1);
+            generate(x,y,k+1,a);
+    }
+}
+
+
+
+ 
+`
+},
+{
+  title: " 76. N-Queens II (Leetcode 52)",
+  language: "", 
+  description: "",
+  code:`
+import java.util.*;
+class Solution 
+{
+    
+    
+    public List<List<String>> solveNQueens(int n) 
+    {
+        List<List<String>> res = new ArrayList<>();
+        char a[][]=new char[n][n];
+        for(int i=0;i<n;i++)
+        {
+            Arrays.fill(a[i],'.');
+        }
+        solve(res,a,0,n);
+        return res;
+        
+    }
+    public void solve(List<List<String>> res,char a[][],int r,int n)
+    {
+        if(r==n)
+        {
+            res.add(create(a));
+            return;
+        }
+        for(int c=0;c<n;c++)
+        {
+           if(valid(a,r,c,n))
+           {
+                a[r][c]='Q';
+                solve(res,a,r+1,n);
+                a[r][c]='.';
+           }
+        }
+    }
+    public boolean valid(char a[][],int r,int c,int n)
+    {
+        for(int i=0;i<=r;i++)
+        {
+            if(a[i][c]=='Q')
+                return false;
+        }
+        for(int i=r,j=c;i>=0&&j>=0;i--,j-- )
+        {
+            if(a[i][j]=='Q')
+              return false;
+        }
+        for(int i=r,j=c;i>=0&&j<n;i--,j++)
+        {
+            if(a[i][j]=='Q')
+              return false;
+        }
+        return true;
+    }
+    public List<String> create(char a[][])
+    {
+        List<String> al=new ArrayList<>();
+        for(char ch[]:a)
+        {
+            String s=String.copyValueOf(ch);
+            al.add(s);
+        }
+        return al;
+    }
+    
+}`
+},
+{
+  title: " 77. Singly Linked List Implementation",
+  language: "", 
+  description: "",
+  code:`class  LL 
+{
+    Node head;
+    int size;
+    LL()
+    {
+        this.head=null;
+        this.size=0;
+    }
+    class Node 
+    {
+        int val;
+        Node next;
+        Node(int val)
+        {
+            this.val=val;
+        }
+    }
+    void addF(int val)
+    {
+        Node n=new Node(val);
+        n.next=head;
+        head=n;
+        size++;
+    }
+    void addL(int val)
+    {
+        Node n=new Node(val);
+        if(head==null)
+            addF(val);
+        else
+        {
+            Node t=head;
+            while(t.next!=null)
+            {
+                t=t.next;
+            }
+            t.next=n;
+            size++;
+        }
+    }
+    int removeF()
+    {
+        if(head==null)
+           throw new RuntimeException("list is empty");
+       
+            Node k=head;
+            head=head.next;
+            size--;
+            return k.val;
+            
+        
+    }
+    int removeL()
+    {
+        if(head==null)
+           throw new RuntimeException("list is empty");
+        
+        Node t=head;
+        while(t.next.next!=null)
+        {
+            t=t.next;
+        }
+        Node k=t.next;
+        t.next=null;
+        size--;
+        return k.val;
+        
+    }
+    void addatidx(int idx,int val)
+    {
+        if(idx<0||idx>=size)
+           throw new RuntimeException("index out of bounds"); 
+         
+        Node t=head;
+        for(int i=1;i<idx;i++)
+        {
+            t=t.next;
+        }
+        Node n=new Node(val);
+        n.next=t.next;
+        t.next=n;
+        size++;
+    }
+    int removeatidx(int idx)
+    {
+        if(idx<0||idx>=size)
+           throw new RuntimeException("index out of bounds"); 
+        
+        if(idx==0)
+            return removeF();
+        if(idx==size-1)
+            return removeL();
+        Node t=head;
+        for(int i=1;i<idx;i++)
+        {
+            t=t.next;
+        }
+        Node k=t.next;
+        t.next=t.next.next;
+        size--;
+        return k.val;
+    }
+    int get(int idx)
+    {
+        if(idx<0||idx>=size)
+           throw new RuntimeException("index out of bounds");
+        Node t=head;
+        for(int i=1;i<=idx;i++)
+        {
+            t=t.next;
+        }
+        return t.val;
+    }
+    void set(int idx,int val)
+    {
+        if(idx<0||idx>=size)
+           throw new RuntimeException("index out of bounds");
+        Node t=head;
+        for(int i=1;i<=idx;i++)
+        {
+            t=t.next;
+        }
+        t.val=val;
+    }
+    public String toString()
+    {
+        String s="[";
+        Node t=head;
+        while(t!=null)
+        {
+            if(t==head)
+                s=s+t.val;
+            else
+                s=s+","+t.val;
+        
+           t=t.next;
+        }
+        return s+"]";
+    }
+    public static void main (String[] args) 
+    {
+        LL l1=new LL();
+        l1.addL(10);
+        l1.addL(20);
+        l1.addL(30);
+        System.out.println(l1);
+        l1.addF(40);
+        System.out.println(l1);
+        l1.removeL();
+        System.out.println(l1);
+        l1.removeF();
+        System.out.println(l1);
+        l1.addatidx(1,50);
+        System.out.println(l1);
+        l1.removeatidx(1);
+        System.out.println(l1);
+        l1.set(1,100);
+        System.out.println(l1);
+        System.out.println(l1.get(1));
+    }
+}
+`
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+{
+  title: "",
+  language: "", 
+  description: "",
+  code:``
+},
+    ];
+
+    const container = document.getElementById("codeContainer");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCode = document.getElementById("modalCode");
+    const search = document.getElementById("search");
+
+    function showCodes(list) {
+      container.innerHTML = "";
+      list.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "code-card";
+        div.innerHTML = `<h3>${c.title}</h3><p>${c.language}</p><p>${c.description}</p>`;
+        div.onclick = () => openModal(c);
+        container.appendChild(div);
+      });
+    }
+
+    function openModal(codeObj) {
+      modalTitle.innerText = codeObj.title;
+      modalCode.textContent = codeObj.code;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    search.addEventListener("input", e => {
+      const value = e.target.value.toLowerCase();
+      const filtered = codes.filter(c => c.title.toLowerCase().includes(value));
+      showCodes(filtered);
+    });
+
+    showCodes(codes);
+  </script>
+</body>
+</html>
